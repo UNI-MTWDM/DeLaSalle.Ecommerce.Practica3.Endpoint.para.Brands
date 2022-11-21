@@ -1,0 +1,51 @@
+@page
+@model DeLaSalle.Ecommerce.WebSite.Pages.ProductCategory.ListModel
+
+<div class="container-fluid">
+    <form method="get">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <br/>
+                <button id="btnSearch" class="btn btn-primary mr-3">Search</button>
+                <a asp-page=".\Edit" class="btn btn-success">Add New </a>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+
+                @foreach (var category in @Model.ProductCategories)
+                {
+                    <tr>
+                        <td>@category.Name</td>
+                        <td>@category.Description</td>
+                        <td>
+                            <a a-asp-area="" asp-page="/ProductCategory/Edit" asp-route-id="@category.Id"
+                               class = "btn btn-primary" role="button">Edit</a>
+                            
+                            <a a-asp-area="" asp-page="/ProductCategory/Delete" asp-route-id="@category.Id"
+                             class = "btn btn-danger" role="button">Delete</a>
+                        </td>
+                    </tr>
+                }
+                
+            </table>
+
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+
+</div>
